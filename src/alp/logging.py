@@ -64,9 +64,10 @@ class ALPLogger:
         :param context: Additional context about the error
         """
         context = context or {}
+        context_str = " | ".join(f"{k}: {v}" for k, v in context.items())
         error_message = (
             f"Error in iteration {iteration}: {str(error)}\n"
-            f"Context: {context}"
+            f"Context: {context_str}"
         )
         self.logger.error(error_message, exc_info=True)
     
